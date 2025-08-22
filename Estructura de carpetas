@@ -1,0 +1,31 @@
+nikita-woo-builder/
+├─ package.json
+├─ /config
+│  ├─ tipificaciones_codigos.json      # (YA lo tenemos, códigos → nombres DF)
+│  ├─ correspondencias.json            # reglas Woo (categorías, talles por curva, etiquetas base, dimensiones…)
+│  ├─ talles_map.json                  # talle → token SKU (p.ej. "30/40" → "30")
+│  └─ headers_woo.json                 # encabezados exactos del CSV de Woo (en español)
+├─ /data
+│  ├─ entrada_padres.xlsx              # lo llenás vos (sku_base, nombre, overrides opcionales)
+│  ├─ maestro_dragonfish.csv|xlsx      # por SKU: códigos (proveedor, familia, curva, categoría, clasif., tipo)
+│  └─ export_woo_padres.csv            # export de Woo tras importar los padres (trae ID + SKU)
+├─ /out
+│  ├─ woo_padres.csv                   # CSV listo para importar PADRES
+│  ├─ woo_variantes.csv                # CSV listo para importar VARIACIONES
+│  └─ dragonfish_activar.txt           # lista de SKUs de variación para estimular en Dragonfish
+├─ /logs
+│  ├─ no_encontrados.txt
+│  ├─ codigos_desconocidos.txt
+│  ├─ curvas_sin_talles.txt
+│  ├─ categorias_sin_mapa.txt
+│  └─ inconsistencias_marca.txt
+└─ /src
+   ├─ utils/
+   │  ├─ readTable.js      # lee XLSX/CSV y normaliza encabezados (acentos, mayúsculas, espacios)
+   │  ├─ csv.js            # escribe CSV con comillas, UTF-8
+   │  ├─ dicts.js          # carga tipificaciones + correspondencias y helpers de mapeo
+   │  ├─ buildWooRow.js    # construye filas padre/variación con todas las reglas
+   │  └─ text.js           # helpers de etiquetas (deduplicar, normalizar)
+   └─ steps/
+      ├─ 01_generar_padres.js
+      └─ 04_generar_variantes.js

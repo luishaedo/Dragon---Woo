@@ -1,0 +1,195 @@
+{
+  "categoria_map": {
+    "JEAN": {
+      "HOMBRE": "HOMBRE, HOMBRE > JEANS",
+      "MUJER": "MUJER, MUJER > JEANS",
+      "NENE": "NENE, NENE > JEANS",
+      "NENA": "NENA, NENA > JEANS"
+    },
+    "PANTALON": {
+      "HOMBRE": "HOMBRE, HOMBRE > PANTALONES",
+      "MUJER": "MUJER, MUJER > PANTALONES"
+    },
+    "REMERA MANGAS CORTAS": {
+      "HOMBRE": "HOMBRE, HOMBRE > REMERAS",
+      "MUJER": "MUJER, MUJER > REMERAS"
+    },
+    "REMERA MANGAS LARGAS": {
+      "HOMBRE": "HOMBRE, HOMBRE > REMERAS",
+      "MUJER": "MUJER, MUJER > REMERAS"
+    },
+    "CHOMBA MANGAS CORTAS": {
+      "HOMBRE": "HOMBRE, HOMBRE > CHOMBAS",
+      "MUJER": "MUJER, MUJER > CHOMBAS"
+    },
+    "CHOMBA MANGAS LARGAS": {
+      "HOMBRE": "HOMBRE, HOMBRE > CHOMBAS",
+      "MUJER": "MUJER, MUJER > CHOMBAS"
+    },
+    "MUSCULOSA": {
+      "HOMBRE": "HOMBRE, HOMBRE > MUSCULOSAS",
+      "MUJER": "MUJER, MUJER > MUSCULOSAS"
+    }
+  },
+  "etiquetas_base_por_categoria": {
+    "JEAN": [
+      "Denim",
+      "Jean",
+      "Pantalon",
+      "Pantalones"
+    ],
+    "PANTALON": [
+      "Pantalon",
+      "Pantalones"
+    ],
+    "REMERA MANGAS CORTAS": [
+      "Remera",
+      "T-Shirt",
+      "Algodon"
+    ],
+    "REMERA MANGAS LARGAS": [
+      "Remera",
+      "T-Shirt",
+      "Algodon"
+    ],
+    "CHOMBA MANGAS CORTAS": [
+      "Chomba",
+      "Polo"
+    ],
+    "CHOMBA MANGAS LARGAS": [
+      "Chomba",
+      "Polo"
+    ],
+    "MUSCULOSA": [
+      "Musculosa",
+      "Sin mangas"
+    ]
+  },
+  "clasificacion_tags_map": {
+    "SLIM": [
+      "Slim"
+    ],
+    "REGULAR": [
+      "Regular"
+    ],
+    "CHUPIN / SKINNY": [
+      "Skinny"
+    ],
+    "LOOSE": [
+      "Loose"
+    ],
+    "OXFORD": [
+      "Oxford"
+    ],
+    "CUELLO REDONDO": [
+      "Escote redondo"
+    ],
+    "CUELLO EN V": [
+      "Escote en V"
+    ],
+    "CUELLO MAO": [
+      "Cuello mao"
+    ],
+    "CUELLO ALTO": [
+      "Cuello alto"
+    ]
+  },
+  "tipo_tags_map": {
+    "TIRO BAJO": [
+      "Tiro bajo"
+    ],
+    "TIRO MEDIO": [
+      "Tiro medio"
+    ],
+    "TIRO INTERMEDIO": [
+      "Tiro intermedio"
+    ],
+    "LISO / BASICO": [
+      "Basico"
+    ],
+    "ESTAMPADO": [
+      "Estampado"
+    ],
+    "RAYADO / LISTADO": [
+      "Rayado/Listado"
+    ],
+    "CUADRO": [
+      "Cuadros"
+    ],
+    "CARGO": [
+      "Cargo"
+    ]
+  },
+  "curva_talles_map": {
+    "JEAN HOMBRE (26 - 70)": [
+      "28/38",
+      "30/40",
+      "32/42",
+      "34/44",
+      "36/46",
+      "38/48",
+      "40/50"
+    ],
+    "JEAN DAMA (04 al 38)": [
+      "24/34",
+      "26/36",
+      "28/38",
+      "30/40",
+      "32/42"
+    ],
+    "PUNTO ADULTO (2XS-6XL) (46-54) (7-9)": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "UNICO": [
+      "UNICO"
+    ]
+  },
+  "dimensiones_por_categoria": {
+    "JEAN": {
+      "peso": "0.60",
+      "largo": "20",
+      "ancho": "20",
+      "alto": "10"
+    },
+    "PANTALON": {
+      "peso": "0.60",
+      "largo": "20",
+      "ancho": "20",
+      "alto": "10"
+    },
+    "REMERA MANGAS CORTAS": {
+      "peso": "0.30",
+      "largo": "25",
+      "ancho": "20",
+      "alto": "3"
+    },
+    "REMERA MANGAS LARGAS": {
+      "peso": "0.30",
+      "largo": "25",
+      "ancho": "20",
+      "alto": "3"
+    },
+    "CHOMBA MANGAS CORTAS": {
+      "peso": "0.35",
+      "largo": "25",
+      "ancho": "20",
+      "alto": "4"
+    },
+    "CHOMBA MANGAS LARGAS": {
+      "peso": "0.35",
+      "largo": "25",
+      "ancho": "20",
+      "alto": "4"
+    },
+    "MUSCULOSA": {
+      "peso": "0.25",
+      "largo": "25",
+      "ancho": "20",
+      "alto": "3"
+    }
+  }
+}

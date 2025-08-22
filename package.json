@@ -1,0 +1,15 @@
+{
+  "name": "nikita-woo-builder",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "gen:padres": "node src/steps/01_generar_padres.js data/entrada_padres.xlsx data/maestro_dragonfish.xlsx out/woo_padres.csv",
+    "gen:variantes": "node src/steps/04_generar_variantes.js data/entrada_padres.xlsx data/maestro_dragonfish.xlsx data/export_woo_padres.csv out/woo_variantes.csv out/dragonfish_activar.txt"
+  },
+  "dependencies": {
+    "csv-parse": "^5.5.6",
+    "csv-stringify": "^6.5.0",
+    "fs-extra": "^11.2.0",
+    "xlsx": "^0.18.5"
+  }
+}
