@@ -34,31 +34,23 @@
   "etiquetas_base_por_categoria": {
     "JEAN": [
       "Denim",
-      "Jean",
-      "Pantalon",
-      "Pantalones"
+      "Jean"
     ],
     "PANTALON": [
       "Pantalon",
       "Pantalones"
     ],
     "REMERA MANGAS CORTAS": [
-      "Remera",
-      "T-Shirt",
-      "Algodon"
+      "Remera MC"
     ],
     "REMERA MANGAS LARGAS": [
-      "Remera",
-      "T-Shirt",
-      "Algodon"
+      "Remera ML"
     ],
     "CHOMBA MANGAS CORTAS": [
-      "Chomba",
-      "Polo"
+      "Chomba MC"
     ],
     "CHOMBA MANGAS LARGAS": [
-      "Chomba",
-      "Polo"
+      "Chomba ML"
     ],
     "MUSCULOSA": [
       "Musculosa",
@@ -92,6 +84,24 @@
     ],
     "CUELLO ALTO": [
       "Cuello alto"
+    ],
+    "OVERSIZE": [
+      "OVERSIZE"
+    ],
+    "ENTALLADA": [
+      "Entallada"
+    ],
+    "SEMI ENTALLADA": [
+      "Semi entallada"
+    ],
+    "S/CAPUCHA": [
+      "Sin capucha"
+    ],
+    "C/CAPUCHA": [
+      "Con capucha"
+    ],
+    "MOOM": [
+      "Moom"
     ]
   },
   "tipo_tags_map": {
@@ -118,6 +128,51 @@
     ],
     "CARGO": [
       "Cargo"
+    ],
+    "MEDIAS INVISIBLE": [
+      "Invisible"
+    ],
+    "MEDIAS SOQUETE": [
+      "Soquete"
+    ],
+    "MEDIAS 3/4": [
+      "3/4"
+    ],
+    "LARGAS": [
+      "Largas"
+    ],
+    "DEPORTIVO": [
+      "Deportivo"
+    ],
+    "BOTA / BORCEGO": [
+      "Bota/Borcego"
+    ],
+    "OJOTA": [  
+      "Ojota"
+    ],
+    "ZAPATO": [
+      "Zapato"
+    ],
+    "ZAPA MODA": [  
+      "Zapa Moda"
+    ],
+    "ZAPA DEPORTIVA": [  
+      "Zapa Deportiva"
+    ],
+    "COLEGIAL": [  
+      "Colegial"
+    ],
+    "MODA": [  
+      "Moda"
+    ],
+    "DESODORANTE": [  
+      "Desodorante"
+    ],
+    "PERFUME": [  
+      "Perfume"
+    ],
+    "PRINT": [  
+      "Print"
     ]
   },
   "curva_talles_map": {
@@ -128,21 +183,27 @@
       "34/44",
       "36/46",
       "38/48",
-      "40/50"
+      "40/50",
+      "42/52",
+      "44/54"
     ],
     "JEAN DAMA (04 al 38)": [
       "24/34",
       "26/36",
       "28/38",
       "30/40",
-      "32/42"
+      "32/42",
+      "34/44",
+      "36/46"
     ],
     "PUNTO ADULTO (2XS-6XL) (46-54) (7-9)": [
       "S",
       "M",
       "L",
       "XL",
-      "XXL"
+      "2XL",
+      "3XL",
+      "4XL"
     ],
     "UNICO": [
       "UNICO"
