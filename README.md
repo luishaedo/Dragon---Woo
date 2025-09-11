@@ -284,5 +284,20 @@ node src/steps/04_generar_variantes.js   data/entrada_padres.xlsx   data/maestro
 ---
 
 ¿Sugerencias o cambios que quieras fijar por defecto (etiquetas, rutas de categorías, curvas, etc.)? Abrimos `config/correspondencias.json` y lo ajustamos.
-#   D r a g o n - - - W o o  
+#   D r a g o n - - - W o o 
  
+ 
+
+## Extensión: Colores por SKU padre + Fallback cuando el base no está en el maestro
+
+- Si el maestro **no** tiene el `sku_base` (p. ej. `tvhr09234`), pero **sí** tiene los SKUs con color (p. ej. `tvhr09234600`, `tvhr09234601`), el generador de padres:
+  - Busca esas filas por **colores declarados** en `data/var_colores.csv` (preferido).
+  - Si no hay archivo, detecta SKUs que empiezan con el `sku_base` y tienen **sufijo numérico de 3 dígitos** (ej. `600`).
+  - Con esas coincidencias arma un **perfil sintético** del maestro (proveedor/familia/categoría/clasificación/tipo/curva) por **mayoría**.
+  - Además, si faltan colores en archivo, **deriva** la lista de colores desde los sufijos detectados (nombres = código).
+
+- El resto del flujo no cambia:
+  1. `npm run gen:padres` → `out/woo_padres.csv`
+  2. Importar en Woo y exportar CSV con IDs → `data/export_woo_padres.csv`
+  3. `npm run gen:variantes` → `out/woo_variantes.csv` y `out/dragonfish_activar.txt`
+
