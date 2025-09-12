@@ -26,21 +26,21 @@ coverage/
 .nyc_output/
 
 # === Salidas generadas por el proyecto ===
-out/**
-logs/**
-*.zip
+# out/**
+# logs/**
+# *.zip
 
 # === Datos de entrada (privados) ===
 # No subir archivos reales del maestro, entradas ni exports de Woo
-data/**/*.csv
-data/**/*.tsv
-data/**/*.xlsx
-data/**/*.xls
-data/**/*.xlsm
-data/**/*.ods
-data/**/export_woo_padres.csv
-data/**/entrada_padres.xlsx
-data/**/maestro_dragonfish.*
+# data/**/*.csv
+# data/**/*.tsv
+# data/**/*.xlsx
+# data/**/*.xls
+# data/**/*.xlsm
+# data/**/*.ods
+# data/**/export_woo_padres.csv
+# data/**/entrada_padres.xlsx
+# data/**/maestro_dragonfish.*
 
 # Permitir placeholders si querés mantener carpetas vacías
 !.gitkeep
