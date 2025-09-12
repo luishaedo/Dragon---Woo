@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "gen:padres": "node src/steps/01_generar_padres.js data/entrada_padres.xlsx data/maestro_dragonfish.xlsx out/woo_padres.csv",
+    "gen:padres": "node src/steps/01_generar_padres.js data/entrada_padres/entrada_padres.xlsx data/maestro/maestro_dragonfish.xls out/padres/woo_padres.csv",
     "gen:variantes": "node src/steps/04_generar_variantes.js data/export_woo_padres.csv out/woo_variantes.csv out/dragonfish_activar.txt"
   },
   "dependencies": {

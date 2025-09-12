@@ -13,6 +13,30 @@ const __dirname = path.dirname(__filename);
 const REPO_ROOT = path.resolve(__dirname, "../../");
 
 const HEADERS = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../../config/headers_woo.json"), "utf-8"));
+
+// === Woo parents minimal header set (per request) ===
+const KEEP_HEADERS = [
+  "Tipo",
+  "SKU",
+  "Nombre",
+  "Publicado",
+  "¿Está destacado?",
+  "Visibilidad en el catálogo",
+  "Estado del impuesto",
+  "¿Existencias?",
+  "¿Vendido individualmente?",
+  "Categorías",
+  "Etiquetas",
+  "Nombre del atributo 1",
+  "Valor(es) del atributo 1",
+  "Atributo visible 1",
+  "Atributo global 1",
+  "Atributo por defecto 1",
+  "Nombre del atributo 2",
+  "Valor(es) del atributo 2",
+  "Atributo visible 2",
+  "Atributo global 2"
+];
 const tipificaciones = loadJSON(path.resolve(__dirname, "../../config/tipificaciones_codigos.json"));
 const correspondencias = loadJSON(path.resolve(__dirname, "../../config/correspondencias.json"));
 
@@ -142,7 +166,29 @@ for (const e of entrada) {
 if (noEncontrados.length) fs.writeFileSync(path.join(LOGS_DIR,"padres_no_encontrados.txt"), noEncontrados.join("\n"), "utf-8");
 if (codigosDesconocidos.length) fs.writeFileSync(path.join(LOGS_DIR,"codigos_desconocidos.txt"), codigosDesconocidos.join("\n"), "utf-8");
 
-const csv = writeCsv(HEADERS, outRows);
+
+// Compute "removed columns" for visibility
+const removed = (HEADERS || []).filter(h => !KEEP_HEADERS.includes(h) && h !== '...');
+if (removed?.length) {
+  const removedTxt = removed.join("\\n"); // 👈 importante: doble backslash
+  await fs.ensureDir(path.dirname(outCsv));
+  fs.writeFileSync(path.join(path.dirname(outCsv), "padres_columnas_eliminadas.txt"), removedTxt, "utf-8");
+  console.log("ℹ️  Columnas eliminadas (guardadas en padres_columnas_eliminadas.txt):", removed.length);
+}
+
+// Split output in chunks of 20 rows
+const total = outRows.length;
+const chunkSize = 20;
 await fs.ensureDir(path.dirname(outCsv));
-fs.writeFileSync(outCsv, csv, "utf-8");
-console.log("✅ Generado:", outCsv);
+const { name, dir, ext } = path.parse(outCsv);
+let fileCount = 0;
+for (let i = 0; i < total; i += chunkSize) {
+  const chunk = outRows.slice(i, i + chunkSize);
+  fileCount++;
+  const suffix = String(fileCount).padStart(2, '0');
+  const outPart = path.join(dir, `${name}.part-${suffix}${ext}`);
+  const csvPart = writeCsv(KEEP_HEADERS, chunk);
+  fs.writeFileSync(outPart, csvPart, "utf-8");
+  console.log(`✅ Generado: ${outPart} (${chunk.length} filas)`);
+}
+
