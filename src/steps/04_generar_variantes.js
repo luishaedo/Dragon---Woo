@@ -115,6 +115,10 @@ async function main() {
   const outCsv        = process.argv[3] || "out/woo_variantes.csv";
   const outTxt        = process.argv[4] || "out/dragonfish_activar.txt";
 
+  // Optional overrides:
+  const vtDirArg = process.argv[5] || "";   // e.g. "data/variante_talle" (singular) o "data/variantes_talle"
+  const vcDirArg = process.argv[6] || "";   // e.g. "data/variantes_color"
+
   await fs.ensureDir(path.dirname(outCsv));
   await fs.ensureDir(path.dirname(outTxt));
   await fs.ensureDir(LOGS_DIR);
@@ -136,8 +140,15 @@ async function main() {
   }
 
   // 2) Entradas: padres por talles (lista de sku_base) y padres por color (sku_base + colores)
-  const vtDir = path.resolve(REPO_ROOT, "data/variantes_talle");
-  const vtFiles = (await fs.pathExists(vtDir)) ? (await fs.readdir(vtDir)).filter(f=>/\.(csv|xlsx)$/i.test(f)).map(f=>path.join(vtDir,f)) : [];
+  // Variantes solo talle: try overrides and common folders
+  const vtDirCandidates = [vtDirArg, "data/variantes_talle", "data/variante_talle"].filter(Boolean);
+  let vtDir = "";
+  for (const cand of vtDirCandidates) {
+    const abs = path.resolve(REPO_ROOT, cand);
+    if (await fs.pathExists(abs)) { vtDir = abs; break; }
+  }
+  if (!vtDir) vtDir = path.resolve(REPO_ROOT, "data/variantes_talle");
+  const vtFiles = (await fs.pathExists(vtDir)) ? (await fs.readdir(vtDir)).filter(f => /\.(csv|xlsx)$/i.test(f)).map(f => path.join(vtDir, f)) : [];
   const vtBases = new Set();
   for (const f of vtFiles) {
     const rows = await readTable(f);
@@ -147,7 +158,9 @@ async function main() {
     }
   }
 
-  const colorsMap = await loadColorsMap(REPO_ROOT);
+  // Variantes color+talle: allow directory override for colors
+  const vcDir = vcDirArg || "";  // if empty, colors.js will use defaults
+  const colorsMap = await loadColorsMap(REPO_ROOT, vcDir || null);
   const vcBases = new Set(colorsMap.keys());
 
   // 3) Maestro: para resolver curvas automáticamente

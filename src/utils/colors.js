@@ -13,13 +13,25 @@ import { readTable } from "./readTable.js";
  *   - color_code | code | cod | color
  *   - color_name | name | nombre
  */
-export async function loadColorsMap(repoRootAbsPath) {
+export async function loadColorsMap(repoRootAbsPath, overrideDir = null) {
   const dataDir = path.resolve(repoRootAbsPath, "data");
   const vcolDir = path.join(dataDir, "variantes_color");
   const legacyCsv = path.join(dataDir, "var_colores.csv");
   const legacyXlsx = path.join(dataDir, "var_colores.xlsx");
 
   const files = [];
+  // If overrideDir is provided, use only that directory
+  if (overrideDir) {
+    const dir = path.isAbsolute(overrideDir) ? overrideDir : path.join(repoRootAbsPath, overrideDir);
+    if (await fs.pathExists(dir)) {
+      const all = await fs.readdir(dir);
+      for (const fname of all) {
+        const ext = path.extname(fname).toLowerCase();
+        if (ext === ".csv" || ext === ".xlsx") files.push(path.join(dir, fname));
+      }
+    }
+  }
+
   if (await fs.pathExists(vcolDir)) {
     const all = await fs.readdir(vcolDir);
     for (const fname of all) {
