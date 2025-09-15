@@ -180,7 +180,11 @@ async function main() {
     }
 
     const outPadre = path.join(OUT_SPLIT_DIR, `${skuBase}.csv`);
-    await writeCsv(outPadre, HEADERS, rowsGlobal.filter(x => String(x["SKU"]).startsWith(skuBase)));
+  {
+      const __rows = rowsGlobal.filter(x => String(x["SKU"]).startsWith(skuBase));
+      const __csv = writeCsv(HEADERS, __rows);
+      await fs.writeFile(outPadre, __csv, "utf-8");
+    }
   }
 
   // 4.B) Color + talles
@@ -206,11 +210,18 @@ async function main() {
     }
 
     const outPadre = path.join(OUT_SPLIT_DIR, `${skuBase}.csv`);
-    await writeCsv(outPadre, HEADERS, rowsGlobal.filter(x => String(x["SKU"]).startsWith(skuBase)));
+  {
+      const __rows = rowsGlobal.filter(x => String(x["SKU"]).startsWith(skuBase));
+      const __csv = writeCsv(HEADERS, __rows);
+      await fs.writeFile(outPadre, __csv, "utf-8");
+    }
   }
 
   // 5) Salidas
-  await writeCsv(path.resolve(REPO_ROOT, outCsv), HEADERS, rowsGlobal);
+  {
+    const __csvAll = writeCsv(HEADERS, rowsGlobal);
+    await fs.writeFile(path.resolve(REPO_ROOT, outCsv), __csvAll, "utf-8");
+  }
   await fs.writeFile(path.resolve(REPO_ROOT, outTxt), activarGlobal.join("\n"), "utf-8");
 
   // Logs
